@@ -2,8 +2,16 @@ package ru.sbt.bit.ood.solid.homework;
 
 /**
  * Created by Анна on 31.10.2015.
+ *
+ *
+ * Here the statement is prepered. Can be formed new types of reports ("min salary" etc)
+ *
+ *
  */
+
+
 public class SalaryReport implements Report{
+
     //salary report
     private String report = "select emp.id as emp_id, emp.name as amp_name, sum(salary) as salary " +
             "from employee emp left " +

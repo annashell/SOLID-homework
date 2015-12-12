@@ -8,6 +8,9 @@ import java.time.LocalDate;
 
 /**
  * Created by Анна on 31.10.2015.
+ *
+ *
+ * Here SQL result set is generated
  */
 public class SQLResultSetGenerator implements DataSetGenerator {
 
@@ -17,6 +20,7 @@ public class SQLResultSetGenerator implements DataSetGenerator {
         this.connection = connection;
     }
 
+    @Override
     public ResultSet preparedStatement(String departmentId, LocalDate dateFrom, LocalDate dateTo, String statement) throws SQLException {
         // prepare statement with sql
         PreparedStatement ps = connection.prepareStatement(statement);

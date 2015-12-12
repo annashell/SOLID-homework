@@ -1,24 +1,28 @@
 package ru.sbt.bit.ood.solid.homework;
 
-import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Created by Анна on 31.10.2015.
  */
 public class HTMLStringMaker implements StringMaker {
 
-    public StringBuilder makeFromSQL(ResultSet results) throws Exception {
+    @Override
+    public StringBuilder makeStringBuilder(ArrayList<SalaryData> data) throws Exception {
         StringBuilder resultingHtml = new StringBuilder();
         resultingHtml.append("<html><body><table><tr><td>Employee</td><td>Salary</td></tr>");
         double totals = 0;
-        while (results.next()) {
-            // process each row of query results
+        for (int i = 0; i < data.size(); i++) {
             resultingHtml.append("<tr>"); // add row start tag
-            resultingHtml.append("<td>").append(results.getString("emp_name")).append("</td>"); // appending employee name
-            resultingHtml.append("<td>").append(results.getDouble("salary")).append("</td>"); // appending employee salary for period
+            resultingHtml.append("<td>").append((data.get(i)).getEmpName()).append("</td>"); // appending employee name
+            resultingHtml.append("<td>").append(data.get(i).getSalary()).append("</td>"); // appending employee salary for period
             resultingHtml.append("</tr>"); // add row end tag
-            totals += results.getDouble("salary"); // add salary to totals
+            totals += data.get(i).getSalary(); // add salary to totals
         }
+
         resultingHtml.append("<tr><td>Total</td><td>").append(totals).append("</td></tr>");
         resultingHtml.append("</table></body></html>");
 
